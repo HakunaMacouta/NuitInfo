@@ -33,6 +33,14 @@ Elie et Thomas L. afin qu'ils ne soient pas trop perdus.
 
 ###404 Game
 Par Fabien et Robin.
+>Pour la réalisation de ce sujet, nous avons utilisé les technologies suivantes :
+  - HTML
+  - CSS
+  - PHP
+  - Javascript
+Pour trouver nos idées, nous nous sommes inspirés du thème de cette nuit de l'info.
+Nous avons essayé de faire une page 404 assez drôle tout en faisant de la prévention sur la sécurité routière.
+
 
 ###Calendrier de l'Avent
 Par Elie et Thomas L.
