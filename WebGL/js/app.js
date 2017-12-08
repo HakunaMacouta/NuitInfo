@@ -164,13 +164,8 @@ function ev_keydown(e)
 	else if (key === 37)
 	{
 		camera.rotation.set(0, camera.rotation.y + Math.PI/2,0);
-<<<<<<< HEAD
 		cssCamera.rotation.set(0, camera.rotation.y + 90,0);
 		
-=======
-		cssCamera.rotation.set(0, camera.rotation.y + Math.PI/2,0);
-
->>>>>>> a166a01042fea467f895af404e3406b5712785bf
 		console.log(cameraForward);
 	}
 }
