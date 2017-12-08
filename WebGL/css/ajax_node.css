@@ -6,3 +6,15 @@
 	height: 90%;
 	background-color: blue;
 }
+
+#help-box
+{
+	position: fixed;
+	display: block;
+	z-index: 10;
+	right: 0;
+	top: 0;
+	background-color: #40404010;
+	
+	padding: 10px;
+}

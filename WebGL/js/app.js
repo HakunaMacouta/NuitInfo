@@ -35,13 +35,13 @@ function initCSS3D()
 	var element = document.getElementById("test");
 	
 	var cssObject = new THREE.CSS3DObject( element );
-	cssObject.position.set(-1000,0,0);
+	cssObject.position.set(-1000,0,-500);
 	cssObject.rotation.y = 90;
 	cssScene.add(cssObject);
 
 	element = document.getElementById("calendar");
 	cssObject = new THREE.CSS3DObject( element );
-	cssObject.position.set(1000,0,0);
+	cssObject.position.set(1000,0,-500);
 	cssObject.rotation.y = -90;
 	cssScene.add(cssObject);
 
@@ -58,7 +58,7 @@ function initAll()
 	initCSS3D();
 }
 
-var cssSpeedMult = 75;
+var cssSpeedMult = 50 ;
 var MIN_Z =  30;
 var MAX_Z = -50;
 
@@ -98,7 +98,7 @@ function ev_keydown(e)
 	else if (key === 39)
 	{
 		camera.rotation.set(0, camera.rotation.y - Math.PI/2,0);
-		cssCamera.rotation.set(0, camera.rotation.y - Math.PI/2,0);
+		cssCamera.rotation.set(0, camera.rotation.y - 90,0);
 
 		console.log(cameraForward);
 
@@ -107,7 +107,7 @@ function ev_keydown(e)
 	else if (key === 37)
 	{
 		camera.rotation.set(0, camera.rotation.y + Math.PI/2,0);
-		cssCamera.rotation.set(0, camera.rotation.y + Math.PI/2,0);
+		cssCamera.rotation.set(0, camera.rotation.y + 90,0);
 		
 		console.log(cameraForward);
 	}
