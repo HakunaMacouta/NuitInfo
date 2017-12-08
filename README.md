@@ -1,7 +1,7 @@
 # NuitInfo
 Repo de l'équipe Proxy Market pour la nuit de l'info 2017
 
-##L'équipe
+## L'équipe
 L'équipe est composée de :
 - Fabien Alazet (DUT info S3)
 - Mathilde Baudino (DUT info S3)
@@ -14,7 +14,7 @@ L'équipe est composée de :
 - Benjamin Normand (DUT info alt S3)
 - Florent Vain (L3 info)
 
-##Projets choisis et organisation
+## Projets choisis et organisation
 
 >Nous avons choisis 5 sujets et nous nous sommes mis en équipe de deux pour les réaliser.
 
@@ -29,23 +29,23 @@ son traitement. Mais nous étions tous à disposition des uns des autres pour do
 ou donner un coup de main. Nous avons notamment apporté une attention particulière aux deux premières années
 Elie et Thomas L. afin qu'ils ne soient pas trop perdus.
 
-##Détails de la réalisation des projets
+## Détails de la réalisation des projets
 
-###404 Game
+### 404 Game
 Par Fabien et Robin.
 >Pour la réalisation de ce sujet, nous avons utilisé les technologies suivantes :
   - HTML
   - CSS
   - PHP
   - Javascript
-Pour trouver nos idées, nous nous sommes inspirés du thème de cette nuit de l'info.
+>Pour trouver nos idées, nous nous sommes inspirés du thème de cette nuit de l'info.
 Nous avons essayé de faire une page 404 assez drôle tout en faisant de la prévention sur la sécurité routière.
 
 
-###Calendrier de l'Avent
+### Calendrier de l'Avent
 Par Elie et Thomas L.
 
-###KONAMI CODE
+### KONAMI CODE
 Par Alicia et Benjamin.
 
 >Nos premières idées sont venues facilement pour le konami code, nous avons tous les deux imaginé une page cachée et un peu "obscure" 
@@ -56,8 +56,8 @@ du notre terminal pour lui donner un effet "moniteur". La détection du konami c
 >Le second point que nous avons développés est un mini jeu sous Unity qui devait rappeler le thème de la sécurité routière. Le jeu
 consiste à controller une voiture, et la controller assez pour ne pas écraser les pietons qui traversent !
 
-###Réinventez l'IHM
+### Réinventez l'IHM
 Par Florent et Thomas B.
 
-###Soyez créatifs dans vos erreurs
+### Soyez créatifs dans vos erreurs
 Par Mathilde et Melvin
