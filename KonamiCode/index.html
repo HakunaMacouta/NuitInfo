@@ -1,56 +1,31 @@
 <html>
 <head>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<style>
-    body {
-        font-family: "Arial";
-    }
-
-    h1 {
-        font-size: 23px;
-        font-weight: bold;
-        margin-bottom: 2em;
-    }
-
-    p {
-        font-size: 10px;
-        color: blue;
-    }
-</style>
 <body>
-<h1>Tape le konami code frout</h1>
-<p>FROUT NINJA</p>
+
+
 <div id="info"></div>
+<div id="ladivdujeu"></div>
+<button onclick="lancerJeu()">Click Me</button>
+<button onclick="eteindreJeu()">Eteint</button>
 </body>
-
+<script src="javascript/konami.js"></script>
 <script>
+    function lancerJeu(){
+      var ifram = document.createElement("iframe");
+      ifram.setAttribute("src", "jeuBen.html");
+      ifram.setAttribute("id", "jeu");
+      document.getElementById('ladivdujeu').appendChild(ifram);
 
-  var secret = "38384040373937396665"; //god
-  var input = "";
-  var timer;
-  var mode = false;
-
-  $(document).keyup(function(e) {
-    //alert(e.which);
-    input += e.which;
-
-    clearTimeout(timer);
-    timer = setTimeout(function() { input = ""; }, 500);
-
-    check_input();
-  });
-
-  function check_input() {
-    if(input == secret) {
-      //the secret code
-      alert('konamiii');
     }
-  }
 
-  $(document).ready(function() {
-    setInterval(function() { $('#info').html('Keystroke: ' + input); }, 100);
-  });
+    function eteindreJeu(){
+      console.log('pass');
+      var iframe= document.getElementById("jeu");
+      document.getElementById("ladivdujeu").removeChild(iframe);
+    }
+
 </script>
 </html>
