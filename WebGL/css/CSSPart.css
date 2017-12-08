@@ -1,0 +1,152 @@
+body {
+    background-color: black;
+    margin-right: 10%;
+}
+
+header{
+  color:white;
+  margin-left: 25%;
+
+}
+
+#imgFond{
+  display:flex;
+  position:fixed;
+  z-index: -10;
+  width: 100%;
+}
+
+.case1 {
+  padding: 3px;
+  width: 5%;
+  height:5%;
+  float:left;
+  z-index: 10;
+  background-color: grey;
+  border: solid white;
+  margin: 25px;
+}
+
+.case1:hover {
+  background: url("Ubisoft.gif");
+  background-size: cover;
+  /*background-color: rgb(169, 169, 169);*/
+}
+
+.case2 {
+  padding: 3px;
+  width: 5%;
+  height:5%;
+  float:left;
+  z-index: 10;
+  background-color: grey;
+  border: solid white;
+  margin: 25px;
+}
+
+.case2:hover {
+  background: url("https://media.giphy.com/media/es01FHczrdoKk/giphy.gif");
+  background-size: cover;
+}
+
+.grosseCase {
+  width: 200px;
+  height:150px;
+  float:left;
+  z-index: 10;
+  background-color: grey;
+  border: solid white;
+  margin: 25px;
+}
+
+
+.grosseCase:hover {
+  background: url("ubisoft-logo.gif");
+  background-size: cover;
+  /*background-color: rgb(169, 169, 169);*/
+}
+
+div p {
+  color: white;
+}
+
+
+/******* 
+
+ANIMATION MATRIX CREDIT TO Steve Melcher
+https://codepen.io/xixao/pen/Dxqay
+
+*/
+
+@font-face {
+  font-family: Katakana;
+  src: url('https://s.cdpn.io/26175/MoonBeams-katakana_.TTF');
+}
+#matrix{
+  font-family: Katakana;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: rgba(0, 255, 0, .7);
+  text-shadow: rgba(255, 255, 255, .8) 0px 0px 4px;
+  font-size: 10em;
+  position: fixed;
+  top:0;	
+  z-index: 5000;
+}
+@-webkit-keyframes fade{
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}
+@-webkit-keyframes fall{
+     from {top: -250px;}
+  to 	{top: 300px;}
+}
+
+
+#matrix div{
+  position: absolute;	
+  top: 0;
+  /* arrearance */
+  -webkit-transform: rotate(90deg); 
+  
+  /* animation */
+  -webkit-animation-name: fall, fade;			
+  -webkit-animation-iteration-count: infinite; /* use 0 to infinite */
+  -webkit-animation-direction: normal; /* default is normal. use 'alternate' to reverse direction */
+  -webkit-animation-timing-function: ease-out;
+}
+
+
+.f {
+  margin-left:50px;
+}
+
+#matrix span{
+  color: rgb(0, 255, 0);
+  text-shadow: rgb(255, 255, 255) 0px 0px 5px;
+}
+.f1{
+  font-size: 1.2em;
+}
+.f2{
+  font-size: .9em;
+}
+.c1{
+  color: rgba(0, 255, 0, .5);
+}
+.d1{
+  -webkit-animation-duration: 4s;
+}
+.d2{
+  -webkit-animation-duration: 6s;
+}
+.d3{
+  -webkit-animation-duration: 8s;
+}
+.d4{
+  -webkit-animation-duration: 10s;
+}
+.de{	
+  -webkit-animation-delay: 3s;
+}

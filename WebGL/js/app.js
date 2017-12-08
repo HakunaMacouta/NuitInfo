@@ -32,16 +32,15 @@ function initCSS3D() {
     var element = document.getElementById("test");
 
     var cssObject = new THREE.CSS3DObject( element );
-    cssObject.position.set(-6000,0,-8000);
+    cssObject.position.set(-700,0,-8000);
     cssObject.rotation.y =  Math.PI/2;
 	cssScene.add(cssObject);
 	arrayPages.push(cssObject);
 
     element = document.getElementById("calendar");
     cssObject = new THREE.CSS3DObject( element );
-    cssObject.position.set(500,0,-5000);
-	cssObject.rotation.y = -90;
-	cssObject.element.style.display = 'none';
+    cssObject.position.set(700,0,-5000);
+	cssObject.rotation.y = -Math.PI/2;
     cssScene.add(cssObject);
 	arrayPages.push(cssObject);
 
