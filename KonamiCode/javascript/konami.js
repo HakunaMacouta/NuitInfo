@@ -13,6 +13,6 @@ $(document).keyup(function(e) {
 
 function check_input() {
   if(input === secret) {
-    window.location.href="http://hakunamacouta.fr/nuitdelinfo/konamiTerminal.html";
+    window.location.href="http://hakunamacouta.fr/nuitdelinfo/KonamiCode/konamiTerminal.html";
   }
 }
