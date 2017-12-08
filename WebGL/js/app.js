@@ -1,5 +1,5 @@
 var scene, camera, renderer, geometry, material, cube, light;
-var stopLight, controls, building, building2;
+var stopLight, controls, building, building2, road, roads;
 var cssScene, cssCamera, cssRenderer;
 
 var cameraForward = new THREE.Vector3(0,0,+1);
@@ -106,11 +106,33 @@ function initBuilding() {
     });
 }
 
+function initRoad() {
+    road = new THREE.MTLLoader();
+    road.load( 'models/road/materials.mtl', function( materials ) {
+        materials.preload();
+        var obj = new THREE.OBJLoader();
+        obj.setMaterials( materials );
+        obj.load( 'models/road/model.obj', function ( object ) {
+            var instance;
+            for(var i = 0; i < 10; i++) {
+                instance = clone(obj);
+                instance.scale.set(100,100,100);
+                instance.position.y = -95;
+                instance.rotation.y = Math.PI/2;
+                instance.position.z = -i*5;
+                scene.add( instance );
+            }
+
+        });
+    });
+}
+
 function initAll()
 {
 	initGL();
 	initSky();
 	initBuilding();
+	initRoad();
 	initStopLight();
 	initCSS3D();
 }
