@@ -4,17 +4,6 @@ var cssScene, cssCamera, cssRenderer;
 
 var cameraForward = new THREE.Vector3(0,0,+1);
 
-function deepCopy(oldObj) {
-    var newObj = oldObj;
-    if (oldObj && typeof oldObj === 'object') {
-        newObj = Object.prototype.toString.call(oldObj) === "[object Array]" ? [] : {};
-        for (var i in oldObj) {
-            newObj[i] = deepCopy(oldObj[i]);
-        }
-    }
-    return newObj;
-}
-
 function initGL()
 {
 	scene = new THREE.Scene();
@@ -24,6 +13,7 @@ function initGL()
 	renderer.setClearColor( 0xffffff, 0);
 
 	camera.position.z = 200;
+	camera.position.y = -20;
 
     light = new THREE.AmbientLight( 0xcccccc ); // soft white light
     scene.add( light );
@@ -84,36 +74,38 @@ function initStopLight() {
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials( materials );
         objLoader.load( 'models/stop_Light.obj', function ( object ) {
-            object.position.y = -95;
-            object.rotation.y = 20;
+            object.scale.set(0.6,0.6,0.6);
+            object.position.y = -60;
+            object.position.x = -25;
+            object.rotation.y = Math.PI/2;
             scene.add( object );
         });
     });
 }
-
+var iterator = 0;
 function initBuilding() {
+    var offset = 50;
+    for (var i = 0; i < 20; i++) {
+        var  rnd = Math.round(Math.random());
+        generateBuilding(rnd);
+        iterator++;
+    }
+}
+
+function generateBuilding(rnd) {
     building = new THREE.MTLLoader();
-    building.load( 'models/building_2/materials.mtl', function( materials ) {
+    building.load((rnd === 0) ? 'models/building_2/materials.mtl' : 'models/building_1/materials.mtl', function (materials) {
         materials.preload();
         var objLoader = new THREE.OBJLoader();
-        objLoader.setMaterials( materials );
-        objLoader.load( 'models/building_2/model.obj', function ( object ) {
-            object.scale.set(100,100,100);
-            object.position.x = 100;
-            scene.add( object );
-        });
-    });
-
-    building2 = new THREE.MTLLoader();
-    building2.load( 'models/building_1/materials.mtl', function( materials ) {
-        materials.preload();
-        var obj = new THREE.OBJLoader();
-        obj.setMaterials( materials );
-        obj.load( 'models/building_1/model.obj', function ( object ) {
-            object.scale.set(100,100,100);
-            object.position.x = -100;
-            scene.add( object );
-        });
+        objLoader.setMaterials(materials);
+        objLoader.load(
+            rnd == 0 ? 'models/building_2/model.obj' : 'models/building_1/model.obj', function (object) {
+                object.scale.set(70, 70, 70);
+                object.position.x = offset;
+                object.position.y = 0;
+                object.position.z = 10;
+                scene.add(object);
+            });
     });
 }
 
