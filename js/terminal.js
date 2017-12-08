@@ -35,7 +35,7 @@ function responseToInpute(inputUser){
         "4. entrer \"help\" pour voir les commandes disponibles";
       break;
     case "quit":
-      window.location.href = "http://hakunamacouta.fr/nuitdelinfo/";
+      window.location.href = "index.html";
       sortie = "";
       break;
     case "./game.sh" :

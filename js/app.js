@@ -3,7 +3,29 @@ var stopLight, controls, building, building2, road, roads;
 var cssScene, cssCamera, cssRenderer;
 
 var cameraForward = new THREE.Vector3(0,0,+1);
+/*
+function request(url, div)
+{
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            if("NOP" !== xhttp.responseText)
+            {
+                var cal = document.getElementById("calendar");
+            }
 
+            if(activeDiv !== null)
+            {
+                setInactive(activeDiv);
+            }
+            setActive(div);
+            activeDiv = div;
+        }
+    };
+    xhttp.open("GET", "http://hakunamcouta.fr/nuitdelinfo/"+, true);
+    xhttp.send();
+}*/
 
 function initGL()
 {

@@ -31,7 +31,7 @@ function myMove() {
         }
 
         clearInterval(id);
-        document.getElementById('image').innerHTML="<img src='images/police.png'>";
+        document.getElementById('image').innerHTML="<img src='img/police.png'>";
         document.getElementById('texte').innerHTML="<p>WASTED</p>";
         main();
         document.getElementById('formulaire').style.visibility='visible';

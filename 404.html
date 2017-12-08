@@ -3,22 +3,25 @@
 <head>
   <meta charset="utf-8">
   <title>404 Error</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js/error404.js"></script>
 </head>
 <body>
+  <div id="gameContainer"></div>
   <h1> Error 404 : page not found.</h1>
   <p>
-    <button onclick="myMove()">Clique ici !</button>
+    <button onclick="myMove()">Cliquez ici !</button>
   </p>
   <div id ="container">
-    <img id="voiture"src="images/voitureRouge.png" width="80" height="50" >
-    <img id="policier" src="images/policeCar.png" width="80" height="50" >
-    <img id="route" src="images/road.png" width="1000" height="100" class="responsive" >
+    <img id="voiture"src="img/voitureRouge.png" width="80" height="50" >
+    <img id="policier" src="img/policeCar.png" width="80" height="50" >
+    <img id="route" src="img/road.png" width="1000" height="100" class="responsive" >
   </div>
   <div id="image"></div>
   <div id="texte"></div>
   <div id="texteBis"></div>
+  <div id="son"></div>
 </div>
 <div id="formulaire">
       <form method="post" action="traitement.php">
@@ -41,7 +44,7 @@
                   <td width="10%">
                     <div align="center"><font face="Arial, Helvetica, sans-serif">NON</font></div>
                   </td>
-                  <td> </td>
+  
                 </tr>
                 <tr>
                   <td width="60%"><font face="Arial, Helvetica, sans-serif">Dois-je m'arréter lorsqu'un piéton s'est engagé sur un passage clouté ?</font></td>
@@ -71,7 +74,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td width="60%"><font face="Arial, Helvetica, sans-serif">Si mon feu est vert, est-ce que la personne qui à le feu rouge est prioritaire ?</font></td>
+                  <td width="60%"><font face="Arial, Helvetica, sans-serif">Si je suis préssé et que mon feu passe à l'orange, ai je le droit d'accélérer pour passer ?</font></td>
                   <td width="10%" align="center">
                     <input type="radio" name="radiobutton3" value="0">
                   </td>
@@ -93,4 +96,5 @@
 
 </div>
 </body>
+<script src="js/konami.js"></script>
 </html>
