@@ -14,10 +14,6 @@ function initGL()
 
 	camera.position.z = 200;
 
-	var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-	var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-	var cube = new THREE.Mesh( geometry, material );
-	scene.add( cube );
     light = new THREE.AmbientLight( 0xcccccc ); // soft white light
     scene.add( light );
 
@@ -26,6 +22,7 @@ function initGL()
 
 }
 
+var arrayPages = [];
 function initCSS3D() {
     cssScene = new THREE.Scene();
     cssCamera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -34,15 +31,18 @@ function initCSS3D() {
     var element = document.getElementById("test");
 
     var cssObject = new THREE.CSS3DObject( element );
-    cssObject.position.set(-1000,0,0);
-    cssObject.rotation.y = 90;
-    cssScene.add(cssObject);
+    cssObject.position.set(-6000,0,-8000);
+    cssObject.rotation.y =  Math.PI/2;
+	cssScene.add(cssObject);
+	arrayPages.push(cssObject);
 
     element = document.getElementById("calendar");
     cssObject = new THREE.CSS3DObject( element );
-    cssObject.position.set(1000,0,0);
-    cssObject.rotation.y = -90;
+    cssObject.position.set(500,0,-5000);
+	cssObject.rotation.y = -90;
+	cssObject.element.style.display = 'none';
     cssScene.add(cssObject);
+	arrayPages.push(cssObject);
 
     cssRenderer.setSize( window.innerWidth, window.innerHeight );
     cssRenderer.domElement.style.position = 'absolute';
@@ -116,7 +116,7 @@ function initAll()
 }
 
 var cssSpeedMult = 50 ;
-var MIN_Z =  30;
+var MIN_Z =  200;
 var MAX_Z = -50;
 
 
@@ -155,7 +155,7 @@ function ev_keydown(e)
 	else if (key === 39)
 	{
 		camera.rotation.set(0, camera.rotation.y - Math.PI/2,0);
-		cssCamera.rotation.set(0, camera.rotation.y - 90,0);
+		cssCamera.rotation.y -= Math.PI/2;
 
 		console.log(cameraForward);
 
@@ -164,7 +164,7 @@ function ev_keydown(e)
 	else if (key === 37)
 	{
 		camera.rotation.set(0, camera.rotation.y + Math.PI/2,0);
-		cssCamera.rotation.set(0, camera.rotation.y + 90,0);
+		cssCamera.rotation.y += Math.PI/2;
 		
 		console.log(cameraForward);
 	}
@@ -185,9 +185,8 @@ initAll();
 function animate() {
 	requestAnimationFrame( animate );
 
-	cssRenderer.render( cssScene, cssCamera);
-
     renderer.render( scene, camera );
+	cssRenderer.render( cssScene, cssCamera);
 }
 
 animate();
