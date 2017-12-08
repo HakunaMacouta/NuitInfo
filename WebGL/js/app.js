@@ -1,12 +1,8 @@
 var scene, camera, renderer, geometry, material, cube, light;
-var stopLight, sky, sunSphere, tree1, tree2, tree3, controls, building, building2;
-var scene, camera, renderer;
+var stopLight, controls, building, building2;
 var cssScene, cssCamera, cssRenderer;
-var sky, sunSphere;
 
 var cameraForward = new THREE.Vector3(0,0,+1);
-
-
 
 function initGL()
 {
@@ -15,14 +11,8 @@ function initGL()
 	renderer = new THREE.WebGLRenderer({ alpha: true });
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setClearColor( 0xffffff, 0);
-function init() {
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-    renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setClearColor( 0xffffff, 0);
-
-	camera.position.z = 5;
+	camera.position.z = 200;
 
 	var geometry = new THREE.BoxGeometry( 1, 1, 1 );
 	var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
@@ -36,11 +26,29 @@ function init() {
 
 }
 
-function initCSS3D()
+function initCSS3D() {
+    cssScene = new THREE.Scene();
+    cssCamera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    cssRenderer = new THREE.CSS3DRenderer();
 
-    initBuilding();
-    initStopLight();
-    initSky();
+    var element = document.getElementById("test");
+
+    var cssObject = new THREE.CSS3DObject( element );
+    cssObject.position.set(-1000,0,0);
+    cssObject.rotation.y = 90;
+    cssScene.add(cssObject);
+
+    element = document.getElementById("calendar");
+    cssObject = new THREE.CSS3DObject( element );
+    cssObject.position.set(1000,0,0);
+    cssObject.rotation.y = -90;
+    cssScene.add(cssObject);
+
+    cssRenderer.setSize( window.innerWidth, window.innerHeight );
+    cssRenderer.domElement.style.position = 'absolute';
+    cssRenderer.domElement.style.top = 0;
+
+    document.body.appendChild(cssRenderer.domElement);
 }
 
 
@@ -98,39 +106,12 @@ function initBuilding() {
     });
 }
 
-function listener(elem, event, func)
-{
-	cssScene = new THREE.Scene();
-	cssCamera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
-	cssRenderer = new THREE.CSS3DRenderer();
-
-	var element = document.getElementById("test");
-
-	var cssObject = new THREE.CSS3DObject( element );
-	cssObject.position.set(-1000,0,0);
-	cssObject.rotation.y = 90;
-	cssScene.add(cssObject);
-
-	element = document.getElementById("calendar");
-	cssObject = new THREE.CSS3DObject( element );
-	cssObject.position.set(1000,0,0);
-	cssObject.rotation.y = -90;
-	cssScene.add(cssObject);
-
-	cssRenderer.setSize( window.innerWidth, window.innerHeight );
-	cssRenderer.domElement.style.position = 'absolute';
-	cssRenderer.domElement.style.top = 0;
-
-	document.body.appendChild(cssRenderer.domElement);
-    if (elem.addEventListener)
-        elem.addEventListener(event,func,false);
-    else if (elem.attachEvent) // For IE
-        return elem.attachEvent("on" + event, func);
-}
-
 function initAll()
 {
 	initGL();
+	initSky();
+	initBuilding();
+	initStopLight();
 	initCSS3D();
 }
 
@@ -205,8 +186,6 @@ function animate() {
 	requestAnimationFrame( animate );
 
 	cssRenderer.render( cssScene, cssCamera);
-
-    controls.update();
 
     renderer.render( scene, camera );
 }
