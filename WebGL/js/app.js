@@ -4,6 +4,17 @@ var cssScene, cssCamera, cssRenderer;
 
 var cameraForward = new THREE.Vector3(0,0,+1);
 
+function deepCopy(oldObj) {
+    var newObj = oldObj;
+    if (oldObj && typeof oldObj === 'object') {
+        newObj = Object.prototype.toString.call(oldObj) === "[object Array]" ? [] : {};
+        for (var i in oldObj) {
+            newObj[i] = deepCopy(oldObj[i]);
+        }
+    }
+    return newObj;
+}
+
 function initGL()
 {
 	scene = new THREE.Scene();
@@ -106,7 +117,11 @@ function initBuilding() {
     });
 }
 
+var last=-2;
 function initRoad() {
+	for(var i=0;i<10;i++)
+	{
+
     road = new THREE.MTLLoader();
     road.load( 'models/road/materials.mtl', function( materials ) {
         materials.preload();
@@ -114,17 +129,17 @@ function initRoad() {
         obj.setMaterials( materials );
         obj.load( 'models/road/model.obj', function ( object ) {
             var instance;
-            for(var i = 0; i < 10; i++) {
-                instance = clone(obj);
+				instance = object;
                 instance.scale.set(100,100,100);
-                instance.position.y = -95;
+                instance.position.y = -50;
                 instance.rotation.y = Math.PI/2;
-                instance.position.z = -i*5;
+				instance.position.z = last*-65;
+				last++;
                 scene.add( instance );
-            }
 
         });
     });
+}
 }
 
 function initAll()
