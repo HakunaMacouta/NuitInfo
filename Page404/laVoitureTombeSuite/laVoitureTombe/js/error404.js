@@ -1,5 +1,9 @@
-function myMove() {
+window.onload = function() {
   document.getElementById('formulaire').style.visibility='hidden';
+};
+
+
+function myMove() {
   var voiture = document.getElementById("voiture");
   var policier = document.getElementById("policier")
   var posRunVoiture = 0;
@@ -29,7 +33,7 @@ function myMove() {
         document.getElementById('image').innerHTML="<img src='images/police.png'>";
         document.getElementById('texte').innerHTML="<p>WASTED</p>";
         main();
-        document.getElementById('formulaire').innerHTML="<p>WASTED</p>";
+        document.getElementById('formulaire').style.visibility='visible';
       }
     } else {
       posRunVoiture++;
