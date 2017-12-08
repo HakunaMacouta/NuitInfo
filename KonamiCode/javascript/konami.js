@@ -6,7 +6,7 @@ $(document).keyup(function(e) {
   input += e.which;
 
   clearTimeout(timer);
-  timer = setTimeout(function() { input = ""; }, 500);
+  timer = setTimeout(function() { input = ""; }, 700);
 
   check_input();
 });
@@ -16,6 +16,3 @@ function check_input() {
     window.location.href="konamiTerminal.html";
   }
 }
-$(document).ready(function() {
-  setInterval(function() { $('#info').html('Keystroke: ' + input); }, 100);
-});
