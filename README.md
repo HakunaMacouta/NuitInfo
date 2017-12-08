@@ -59,5 +59,11 @@ consiste à controller une voiture, et la controller assez pour ne pas écraser 
 ### Réinventez l'IHM
 Par Florent et Thomas B.
 
+>Pour ce défis nous avons voulu utiliser les techos émergentes du web comme WebGL et CSS3D. Nous avosn donc mis en place une page à double canvas pouvant afficher des pages intéractives dans les trois dimensions. Une nuit n'étant pas suffisante pour pousser le concept à son paroxisme, une simple preuve de concept à été implémentée sur le thème de la prévention routière.
+
+>Le déplacement simple à l'aide des flèches pourait être remplacé par des manettes VR et la visualisation serait très simplement adaptable vers un affichage en VR également. 
+
+>Au final nous avons essayé à travers ce défis de créer un site internet où le visiteur se déplace litéralement à l'intérieur de celui-ci. 
+
 ### Soyez créatifs dans vos erreurs
 Par Mathilde et Melvin
