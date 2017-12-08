@@ -67,14 +67,14 @@ function initSky() {
     scene.background.minFilter = THREE.LinearFilter;
 }
 
-function initStopLight() {
+function initStopLight(posY, posX, rotZ) {
     stopLight = new THREE.MTLLoader();
     stopLight.load( 'models/stop_Light.mtl', function( materials ) {
         materials.preload();
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials( materials );
         objLoader.load( 'models/stop_Light.obj', function ( object ) {
-            object.scale.set(0.6,0.6,0.6);
+            object.scale.set(0.5,0.5,0.5);
             object.position.y = -60;
             object.position.x = -25;
             object.rotation.y = Math.PI/2;
@@ -82,28 +82,33 @@ function initStopLight() {
         });
     });
 }
-var iterator = 0;
 function initBuilding() {
+    var  rnd, zPos;
     var offset = 50;
-    for (var i = 0; i < 20; i++) {
-        var  rnd = Math.round(Math.random());
-        generateBuilding(rnd);
-        iterator++;
+    for (var i = 0; i < 12; i++) {
+        rnd = Math.round(Math.random());
+        zPos = 150 - (i*52);
+        generateBuilding(rnd, zPos, offset);
+    }
+    for(var j = 0; j< 12; j++) {
+        rnd = Math.round(Math.random());
+        zPos = 150 - (j*52);
+        generateBuilding(rnd, zPos, -offset);
     }
 }
 
-function generateBuilding(rnd) {
+function generateBuilding(rnd, zPos, offset) {
     building = new THREE.MTLLoader();
     building.load((rnd === 0) ? 'models/building_2/materials.mtl' : 'models/building_1/materials.mtl', function (materials) {
         materials.preload();
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials(materials);
         objLoader.load(
-            rnd == 0 ? 'models/building_2/model.obj' : 'models/building_1/model.obj', function (object) {
+            rnd === 0 ? 'models/building_2/model.obj' : 'models/building_1/model.obj', function (object) {
                 object.scale.set(70, 70, 70);
-                object.position.x = offset;
-                object.position.y = 0;
-                object.position.z = 10;
+                object.position.x = rnd === 0 ? offset : offset;
+                object.position.y = rnd === 0 ? 0 : -28;
+                object.position.z = zPos;
                 scene.add(object);
             });
     });
