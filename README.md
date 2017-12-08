@@ -9,7 +9,7 @@ L'équipe est composée de :
 - Elie Boury (DUT info S1)
 - Alicia Gaston (LP DAWIN)
 - Thomas Lavergne (DUT info S1)
-- Robin Marius (DUT info S3)
+- Marius Robin (DUT info S3)
 - Melvin Mège (DUT info S3)
 - Benjamin Normand (DUT info alt S3)
 - Florent Vain (L3 info)
@@ -18,7 +18,7 @@ L'équipe est composée de :
 
 >Nous avons choisis 5 sujets et nous nous sommes mis en équipe de deux pour les réaliser.
 
-- 404 Game : Fabien et Robin
+- 404 Game : Fabien et Marius
 - Calendrier de l'Avent : Elie et Thomas L.
 - KONAMI CODE : Alicia et Benjamin
 - Réinventez l'IHM : Thomas B. et Florent
@@ -32,7 +32,7 @@ Elie et Thomas L. afin qu'ils ne soient pas trop perdus.
 ## Détails de la réalisation des projets
 
 ### 404 Game
-Par Fabien et Robin.
+Par Fabien et Marius.
 >Pour la réalisation de ce sujet, nous avons utilisé les technologies suivantes :
   - HTML
   - CSS
