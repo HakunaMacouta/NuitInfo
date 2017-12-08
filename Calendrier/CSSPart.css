@@ -1,0 +1,72 @@
+  body {
+    background-color: black;
+    margin-right: 10%;
+}
+
+header{
+  color:white;
+  margin-left: 25%;
+
+}
+
+#imgFond{
+  display:flex;
+  position:fixed;
+  z-index: -10;
+  max-width: 100%;
+  height: 100%;
+}
+
+.case1 {
+  padding: 3px;
+  width: 5%;
+  height:5%;
+  float:left;
+  z-index: 10;
+  background-color: grey;
+  border: solid white;
+  margin: 25px;
+}
+
+.case1:hover {
+  background: url("Ubisoft.gif");
+  background-size: cover;
+  /*background-color: rgb(169, 169, 169);*/
+}
+
+.case2 {
+  padding: 3px;
+  width: 5%;
+  height:5%;
+  float:left;
+  z-index: 10;
+  background-color: grey;
+  border: solid white;
+  margin: 25px;
+}
+
+.case2:hover {
+  background: url("https://media.giphy.com/media/es01FHczrdoKk/giphy.gif");
+  background-size: cover;
+}
+
+.grosseCase {
+  width: 200px;
+  height:150px;
+  float:left;
+  z-index: 10;
+  background-color: grey;
+  border: solid white;
+  margin: 25px;
+}
+
+
+.grosseCase:hover {
+  background: url("ubisoft-logo.gif");
+  background-size: cover;
+  /*background-color: rgb(169, 169, 169);*/
+}
+
+div p {
+  color: white;
+}

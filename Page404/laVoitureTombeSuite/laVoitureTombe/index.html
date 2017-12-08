@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>404 Error</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/error404.js"></script>
+</head>
+<body>
+  <h1> Error 404 : page not found.</h1>
+  <p>
+    <button onclick="myMove()">Clique ici !</button>
+  </p>
+  <div id ="container">
+    <img id="voiture"src="images/voitureRouge.png" width="80" height="50" >
+    <img id="policier" src="images/policeCar.png" width="80" height="50" >
+    <img id="route" src="images/road.png" width="1000" height="100" class="responsive" >
+  </div>
+  <div id="image"></div>
+  <div id="texte"></div>
+  <div id="texteBis"></div>
+</div>
+<div id="formulaire">
+  <form method="post" action="traitement.php">
+    <p>
+      <form action="">
+        <div align="center"></div>
+        <table width="80%" border="0" cellspacing="3" cellpadding="0" align="center">
+          <tr>
+            <td align="center" valign="middle">
+              <p>&nbsp;</p>
+              <table width="95%" border="0" cellspacing="3" cellpadding="0">
+                <tr>
+                  <td colspan="4">
+                    <p align="center"><font face="Arial, Helvetica, sans-serif">Veuillez répondre aux questions suivantes pour gagner vos points :</font></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="60%"><font face="Arial, Helvetica, sans-serif"></font></td>
+                  <td width="10%">
+                    <div align="center"><font face="Arial, Helvetica, sans-serif">OUI</font></div>
+                  </td>
+                  <td width="10%">
+                    <div align="center"><font face="Arial, Helvetica, sans-serif">NON</font></div>
+                  </td>
+                  <td> </td>
+                </tr>
+                <tr>
+                  <td width="60%"><font face="Arial, Helvetica, sans-serif">Dois-je m'arréter lorsqu'un piéton s'est angagé sur un passage clouté ?</font></td>
+                  <td width="10%" align="center">
+                    <input type="radio" name="radiobutton0" value="v0">
+                  </td>
+                  <td width="10%" align="center">
+                    <input type="radio" name="radiobutton0" value="v1">
+                  </td>
+                </tr>
+                <tr>
+                  <td width="60%"><font face="Arial, Helvetica, sans-serif">Puis-je prendre la route après avoir bu un verre d'alcool alors que je suis jeune conducteur ?</font></td>
+                  <td width="10%" align="center">
+                    <input type="radio" name="radiobutton1" value="v0">
+                  </td>
+                  <td width="10%" align="center">
+                    <input type="radio" name="radiobutton1" value="v1">
+                  </td>
+                </tr>
+                <tr>
+                  <td width="60%"><font face="Arial, Helvetica, sans-serif">Ai-je le droit de répondre à un appel urgent au volant ? </font></td>
+                  <td width="10%" align="center">
+                    <input type="radio" name="radiobutton2" value="v0">
+                  </td>
+                  <td width="10%" align="center">
+                    <input type="radio" name="radiobutton2" value="v1">
+                  </td>
+                </tr>
+                <tr>
+                  <td width="60%"><font face="Arial, Helvetica, sans-serif">Si mon feu est vert, est-ce que la personne qui à le feu rouge est prioritaire ?</font></td>
+                  <td width="10%" align="center">
+                    <input type="radio" name="radiobutton3" value="v0">
+                  </td>
+                  <td width="10%" align="center">
+                    <input type="radio" name="radiobutton3" value="v1">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" height="74" valign="middle">
+              <input type="button" name="Submit2" value="Voir mon resultat" onClick="traitement.php">
+              <input type="reset" name="Submit2" value="Recommencer" onClick="reset();clearScreen(this.form);">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </p>
+  </form>
+</div>
+</body>
+</html>

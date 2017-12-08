@@ -7,10 +7,18 @@
 </head>
 <body>
     <div id="content">
+        <div id="gameContainer"></div>
         <div id="monitor">le monitor
-            <div class="anaglyph">Bravo tu as trouvé le code !</div>
-            <div class="anaglyph" id="prompt">$:~/ <span class="anaglyph">prompt</span></div>
+            <div id="screenResult">
+                <div class="anaglyph">Bienvenue dans la matrice  vous pouvez maintenant :</div>
+                <div class="anaglyph"> 1. entrer "./game.sh" (Révise bien ton code de la route avant)</div>
+                <div class="anaglyph"> 2. entrer "delete" et détruire ce site à jamais</div>
+                <div class="anaglyph"> 3. entrer "quit" et quitter cette partie obscure du site</div>
+                <div class="anaglyph"> 4. entrer "help" pour voir les commandes disponibles</div>
+            </div>
+            <div class="anaglyph" id="prompt">$:~/ <input id="textprompt" class="anaglyph" placeholder="prompt"/></div>
         </div>
     </div>
+    <script src="javascript/terminal.js"></script>
 </body>
 </html>

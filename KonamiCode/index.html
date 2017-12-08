@@ -6,26 +6,9 @@
 <body>
 
 
-<div id="info"></div>
-<div id="ladivdujeu"></div>
-<button onclick="lancerJeu()">Click Me</button>
-<button onclick="eteindreJeu()">Eteint</button>
+<div id="gameContainer"></div>
+
+
 </body>
 <script src="javascript/konami.js"></script>
-<script>
-    function lancerJeu(){
-      var ifram = document.createElement("iframe");
-      ifram.setAttribute("src", "jeuBen.html");
-      ifram.setAttribute("id", "jeu");
-      document.getElementById('ladivdujeu').appendChild(ifram);
-
-    }
-
-    function eteindreJeu(){
-      console.log('pass');
-      var iframe= document.getElementById("jeu");
-      document.getElementById("ladivdujeu").removeChild(iframe);
-    }
-
-</script>
 </html>
