@@ -1,6 +1,7 @@
 body
 {
     margin:0;
+    box-sizing: border-box;
 }
 
 canvas {
@@ -16,5 +17,5 @@ canvas {
 {
     width:500px;
     height:500px;
-    background-color: red;
+    background-color: green;
 }

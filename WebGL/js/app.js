@@ -1,6 +1,20 @@
 var scene, camera, renderer, geometry, material, cube, light;
 var stopLight, sky, sunSphere, tree1, tree2, tree3, controls, building, building2;
+var scene, camera, renderer;
+var cssScene, cssCamera, cssRenderer;
+var sky, sunSphere;
 
+var cameraForward = new THREE.Vector3(0,0,+1);
+
+
+
+function initGL()
+{
+	scene = new THREE.Scene();
+	camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
+	renderer = new THREE.WebGLRenderer({ alpha: true });
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setClearColor( 0xffffff, 0);
 function init() {
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -8,17 +22,21 @@ function init() {
     renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setClearColor( 0xffffff, 0);
 
+	camera.position.z = 5;
+
+	var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+	var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+	var cube = new THREE.Mesh( geometry, material );
+	scene.add( cube );
     light = new THREE.AmbientLight( 0xcccccc ); // soft white light
     scene.add( light );
 
-    controls = new THREE.OrbitControls( camera );
-    camera.position.set( 0, 20, 50 );
-    controls.update();
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	document.body.appendChild( renderer.domElement );
 
+}
 
-    renderer.setSize( window.innerWidth, window.innerHeight );
-    document.body.appendChild( renderer.domElement );
-
+function initCSS3D()
 
     initBuilding();
     initStopLight();
@@ -82,43 +100,115 @@ function initBuilding() {
 
 function listener(elem, event, func)
 {
+	cssScene = new THREE.Scene();
+	cssCamera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
+	cssRenderer = new THREE.CSS3DRenderer();
+
+	var element = document.getElementById("test");
+
+	var cssObject = new THREE.CSS3DObject( element );
+	cssObject.position.set(-1000,0,0);
+	cssObject.rotation.y = 90;
+	cssScene.add(cssObject);
+
+	element = document.getElementById("calendar");
+	cssObject = new THREE.CSS3DObject( element );
+	cssObject.position.set(1000,0,0);
+	cssObject.rotation.y = -90;
+	cssScene.add(cssObject);
+
+	cssRenderer.setSize( window.innerWidth, window.innerHeight );
+	cssRenderer.domElement.style.position = 'absolute';
+	cssRenderer.domElement.style.top = 0;
+
+	document.body.appendChild(cssRenderer.domElement);
     if (elem.addEventListener)
         elem.addEventListener(event,func,false);
     else if (elem.attachEvent) // For IE
         return elem.attachEvent("on" + event, func);
 }
 
+function initAll()
+{
+	initGL();
+	initCSS3D();
+}
+
+var cssSpeedMult = 75;
+var MIN_Z =  30;
+var MAX_Z = -50;
+
+
+/** KeyDown Callback */
 function ev_keydown(e)
 {
 	var key = e.keyCode ? e.keyCode : e.which;
-		
+
+	console.log(camera.position);
+
+	/** UP ARROW */
 	if(key === 38)
 	{
-		camera.position.z += 1 ;
+		if(camera.position.z < MAX_Z)
+			return;
+		camera.position.x -= cameraForward.x * 1 ;
+		camera.position.z -= cameraForward.z * 1 ;
+
+		cssCamera.position.x -= cameraForward.x * cssSpeedMult ;
+		cssCamera.position.z -= cameraForward.z * cssSpeedMult ;
+
 	}
+	/** DOWN ARROW */
 	else if (key === 40)
 	{
-		camera.position.z -= 1;
+		if(camera.position.z > MIN_Z)
+			return;
+
+		camera.position.x += cameraForward.x * 1 ;
+		camera.position.z += cameraForward.z * 1 ;
+
+		cssCamera.position.x += cameraForward.x * cssSpeedMult ;
+		cssCamera.position.z += cameraForward.z * cssSpeedMult ;
 	}
+	/** RIGHT ARROW */
 	else if (key === 39)
 	{
-		camera.rotation.y += 0.1;
+		camera.rotation.set(0, camera.rotation.y - Math.PI/2,0);
+		cssCamera.rotation.set(0, camera.rotation.y - Math.PI/2,0);
+
+		console.log(cameraForward);
+
 	}
+	/** LEFT ARROW */
 	else if (key === 37)
 	{
-		camera.rotation.y -= 0.1;
+		camera.rotation.set(0, camera.rotation.y + Math.PI/2,0);
+		cssCamera.rotation.set(0, camera.rotation.y + Math.PI/2,0);
+
+		console.log(cameraForward);
 	}
 }
 
+function listener(elem, evnt, func)
+{
+    if (elem.addEventListener)
+        elem.addEventListener(evnt,func,false);
+    else if (elem.attachEvent) // For IE
+        return elem.attachEvent("on" + evnt, func);
+}
+
+listener(document.body, 'keydown', ev_keydown);
+
+initAll();
+
 function animate() {
-    requestAnimationFrame( animate );
+	requestAnimationFrame( animate );
+
+	cssRenderer.render( cssScene, cssCamera);
 
     controls.update();
 
     renderer.render( scene, camera );
 }
 
-listener(document.body, 'keydown', ev_keydown);
-
-init();
 animate();
