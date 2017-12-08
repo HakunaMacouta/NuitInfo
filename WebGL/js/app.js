@@ -4,6 +4,7 @@ var cssScene, cssCamera, cssRenderer;
 
 var cameraForward = new THREE.Vector3(0,0,+1);
 
+
 function initGL()
 {
 	scene = new THREE.Scene();
@@ -23,26 +24,24 @@ function initGL()
 
 }
 
-var arrayPages = [];
 function initCSS3D() {
     cssScene = new THREE.Scene();
     cssCamera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
     cssRenderer = new THREE.CSS3DRenderer();
 
-    var element = document.getElementById("test");
-
-    var cssObject = new THREE.CSS3DObject( element );
-    cssObject.position.set(-700,0,-8000);
-    cssObject.rotation.y =  Math.PI/2;
-	cssScene.add(cssObject);
-	arrayPages.push(cssObject);
-
-    element = document.getElementById("calendar");
-    cssObject = new THREE.CSS3DObject( element );
-    cssObject.position.set(700,0,-5000);
-	cssObject.rotation.y = -Math.PI/2;
-    cssScene.add(cssObject);
-	arrayPages.push(cssObject);
+    var element;
+    var sign=1;
+    var nbPages = 5;
+    var page = "page";
+    for(var i=0;i<nbPages;i++)
+    {
+        sign = i%2===0?1:-1;
+        element = document.getElementById(page.concat(i+1));
+        cssObject = new THREE.CSS3DObject( element );
+        cssObject.position.set(700*sign,0,-1000*i);
+        cssObject.rotation.y = Math.PI/2 * -sign;
+        cssScene.add(cssObject);
+    }
 
     cssRenderer.setSize( window.innerWidth, window.innerHeight );
     cssRenderer.domElement.style.position = 'absolute';
@@ -152,6 +151,10 @@ var cssSpeedMult = 50 ;
 var MIN_Z =  200;
 var MAX_Z = -50;
 
+var z = [ 1 , 0 , -1, 0];
+var counter = 5000;
+var keyVar = [38, 39, 40, 37];
+
 
 /** KeyDown Callback */
 function ev_keydown(e)
@@ -164,12 +167,11 @@ function ev_keydown(e)
 	if(key === 38)
 	{
 		if(camera.position.z < MAX_Z)
-			return;
-		camera.position.x -= cameraForward.x * 1 ;
-		camera.position.z -= cameraForward.z * 1 ;
+            return;
+            
+		camera.position.z -= z[counter%4] * 1 ;
 
-		cssCamera.position.x -= cameraForward.x * cssSpeedMult ;
-		cssCamera.position.z -= cameraForward.z * cssSpeedMult ;
+		cssCamera.position.z -= z[counter%4] * cssSpeedMult ;
 
 	}
 	/** DOWN ARROW */
@@ -178,28 +180,24 @@ function ev_keydown(e)
 		if(camera.position.z > MIN_Z)
 			return;
 
-		camera.position.x += cameraForward.x * 1 ;
-		camera.position.z += cameraForward.z * 1 ;
+		camera.position.z += z[counter%4] * 1 ;
 
-		cssCamera.position.x += cameraForward.x * cssSpeedMult ;
-		cssCamera.position.z += cameraForward.z * cssSpeedMult ;
+		cssCamera.position.z += z[counter%4] * cssSpeedMult ;
 	}
 	/** RIGHT ARROW */
 	else if (key === 39)
 	{
 		camera.rotation.set(0, camera.rotation.y - Math.PI/2,0);
-		cssCamera.rotation.y -= Math.PI/2;
-
-		console.log(cameraForward);
+        cssCamera.rotation.y -= Math.PI/2;
+        counter++;
 
 	}
 	/** LEFT ARROW */
 	else if (key === 37)
 	{
 		camera.rotation.set(0, camera.rotation.y + Math.PI/2,0);
-		cssCamera.rotation.y += Math.PI/2;
-		
-		console.log(cameraForward);
+        cssCamera.rotation.y += Math.PI/2;
+        counter--;
 	}
 }
 
