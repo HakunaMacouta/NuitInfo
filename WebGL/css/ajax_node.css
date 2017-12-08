@@ -1,0 +1,19 @@
+#content-ajax{
+	position: absolute;
+	top: 5%;
+	left: 25%;
+	width: 50%;
+	height: 90%;
+	background-color: blue;
+}
+
+#help-box
+{
+	position: fixed; 
+	display: block;
+	z-index: 10;
+	right: 0;
+	top: 0;
+	background-color: #ffffff81;
+	padding: 10px;
+}
